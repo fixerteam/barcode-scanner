@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import {
   BarCodeScanner,
   BarCodeScannedCallback,
@@ -21,16 +21,22 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.full}>
       <BarCodeScanner
         onBarCodeRead={handleBarcodeRead}
         onDetectorCreated={handleDetectorCreated}
         type={CameraType.back}
         barCodeTypes={[BarCodeType.ean13, BarCodeType.qr]}
-        style={{ flex: 1 }}
+        style={styles.full}
       />
       <Text>{detector}</Text>
       <Text>{barcode}</Text>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  full: {
+    flex: 1,
+  },
+})
