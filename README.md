@@ -1,6 +1,10 @@
 # @fixerteam/barcode-scanner
 
-Simple Barcode scanner based on expo-barcode-scanner wit HMS supportr
+Simple Barcode scanner based on expo-barcode-scanner with HMS support.
+
+- on devices with GooglePlayServices would be used play-services-vision detector
+- on devices with HuaweiMobileServices would be used HmsScanKit detector
+- on other devices will would used Zxing detector
 
 ## Installation
 
@@ -8,14 +12,34 @@ Simple Barcode scanner based on expo-barcode-scanner wit HMS supportr
 npm install @fixerteam/barcode-scanner
 ```
 
+or
+
+```sh
+yarn add @fixerteam/barcode-scanner
+```
+
 ## Usage
 
 ```js
-import BarcodeScanner from "@fixerteam/barcode-scanner";
+import { BarCodeScanner } from '@fixerteam/barcode-scanner'
 
 // ...
 
-const result = await BarcodeScanner.multiply(3, 7);
+const handleBarcodeRead = ({ type, data }) => {
+  console.log(`barcode type=${type} value=${data}`)
+}
+
+const handleDetectorCreated = ({ detector }) => {
+  console.log('detector ', detector)
+}
+
+;<BarCodeScanner
+  onBarCodeRead={handleBarcodeRead}
+  onDetectorCreated={handleDetectorCreated}
+  type={CameraType.back}
+  barCodeTypes={[BarCodeType.ean13, BarCodeType.qr]}
+  style={{ flex: 1 }}
+/>
 ```
 
 ## Contributing
