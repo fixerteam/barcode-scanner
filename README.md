@@ -23,23 +23,25 @@ yarn add @fixerteam/barcode-scanner
 ```js
 import { BarCodeScanner } from '@fixerteam/barcode-scanner'
 
-// ...
+export const Example = () => {
+  const handleBarcodeRead = ({ type, data }) => {
+    console.log(`barcode type=${type} value=${data}`)
+  }
 
-const handleBarcodeRead = ({ type, data }) => {
-  console.log(`barcode type=${type} value=${data}`)
+  const handleDetectorCreated = ({ detector }) => {
+    console.log('detector ', detector)
+  }
+
+  return (
+    <BarCodeScanner
+      onBarCodeRead={handleBarcodeRead}
+      onDetectorCreated={handleDetectorCreated}
+      type={CameraType.back}
+      barCodeTypes={[BarCodeType.ean13, BarCodeType.qr]}
+      style={{ flex: 1 }}
+    />
+  )
 }
-
-const handleDetectorCreated = ({ detector }) => {
-  console.log('detector ', detector)
-}
-
-;<BarCodeScanner
-  onBarCodeRead={handleBarcodeRead}
-  onDetectorCreated={handleDetectorCreated}
-  type={CameraType.back}
-  barCodeTypes={[BarCodeType.ean13, BarCodeType.qr]}
-  style={{ flex: 1 }}
-/>
 ```
 
 ## Contributing
