@@ -36,15 +36,16 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/fixerteam/fixerteam-barcode-scanner",
+  "repository": "https://github.com/fixerteam/barcode-scanner",
   "author": "fixerteam <fixerteam@yandex.ru> (https://github.com/fixerteam)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fixerteam/fixerteam-barcode-scanner/issues"
+    "url": "https://github.com/fixerteam/barcode-scanner/issues"
   },
-  "homepage": "https://github.com/fixerteam/fixerteam-barcode-scanner#readme",
+  "homepage": "https://github.com/fixerteam/barcode-scanner#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
