@@ -1,5 +1,5 @@
 import React from 'react'
-import { ViewProps, requireNativeComponent } from 'react-native'
+import { ViewProps, requireNativeComponent, StyleSheet } from 'react-native'
 
 const BarCodeScannerView = requireNativeComponent<
   ViewProps & {
@@ -71,6 +71,7 @@ export class BarCodeScanner extends React.Component<BarCodeScannerProps> {
       <BarCodeScannerView
         type={CameraType.back}
         barCodeTypes={Object.values(BarCodeType)}
+        style={styles.fullscreen}
         {...restProps}
         onBarCodeScanned={this.onObjectDetected(onBarCodeRead)}
         onDetectorCreated={this.onDetectorInitialized(onDetectorCreated)}
@@ -102,3 +103,9 @@ export class BarCodeScanner extends React.Component<BarCodeScannerProps> {
     }
   }
 }
+
+const styles = StyleSheet.create({
+  fullscreen: {
+    ...StyleSheet.absoluteFillObject,
+  },
+})
