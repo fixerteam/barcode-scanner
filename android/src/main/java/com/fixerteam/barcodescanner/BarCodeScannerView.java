@@ -120,25 +120,8 @@ public class BarCodeScannerView extends ViewGroup {
     if (null == mViewFinder) {
       return;
     }
-    float width = right - left;
-    float height = bottom - top;
-    int viewfinderWidth;
-    int viewfinderHeight;
-    double ratio = mViewFinder.getRatio();
 
-    // Just fill the given space
-    if (ratio * height < width) {
-      viewfinderWidth = (int) (ratio * height);
-      viewfinderHeight = (int) height;
-    } else {
-      viewfinderHeight = (int) (width / ratio);
-      viewfinderWidth = (int) width;
-    }
-
-    int viewFinderPaddingX = (int) ((width - viewfinderWidth) / 2);
-    int viewFinderPaddingY = (int) ((height - viewfinderHeight) / 2);
-
-    mViewFinder.layout(viewFinderPaddingX, viewFinderPaddingY, viewFinderPaddingX + viewfinderWidth, viewFinderPaddingY + viewfinderHeight);
-    postInvalidate(this.getLeft(), this.getTop(), this.getRight(), this.getBottom());
+    mViewFinder.layout(left, top, right, bottom);
+    postInvalidate(left, top, right, bottom);
   }
 }
